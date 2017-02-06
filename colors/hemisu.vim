@@ -16,6 +16,10 @@ endif
 " Declare theme name
 let g:colors_name = "hemisu"
 
+" store the current bg to force it at the end
+" there are situation in which the background gets reseted
+let s:background = &background
+
 "}}}
 " The Colors -----------------------------------------------{{{
 " Define reusable colors
@@ -47,7 +51,7 @@ let s:darkTan          = { "gui": "#503D15", "cterm": "52"  }
 let s:lightTan         = { "gui": "#ECE1C8", "cterm": "230" }
 
 " Assign to semantic categories based on background color
-if &background == "dark"
+if s:background == "dark"
   " Dark theme
   let s:bg         = s:black
   let s:norm       = s:almostWhite
@@ -212,4 +216,5 @@ hi! link helpURL             Underlined
 
 "}}}
 
+execute "set background=" . s:background
 " vim: fdm=marker:sw=2:sts=2:et
